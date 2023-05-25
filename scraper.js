@@ -7,6 +7,11 @@ const cheerio = require('cheerio');
  * @returns {Object[]} - Array of unique reviewer names with their location, rating, and text.
  */
 async function scrapeYelpReviews(input) {
+  const lastIndex = input.lastIndexOf('?');
+  if (lastIndex !== -1) {
+   input = input.substring(0, lastIndex);
+  }
+
   try {
     let url;
     if (input.startsWith('https://www.yelp.com/')) {
