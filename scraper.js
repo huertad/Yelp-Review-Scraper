@@ -97,7 +97,7 @@ async function scrape(pageNumber, url, $, reviewerNames) {
     const name = nameElement.text();
     const rating = ratingElement.find('div').first().attr('aria-label');
     const text = textElement.text();
-    const date = revDate.text();
+    const date = revDate.first().text();    
     
     if (name !== '' && name !== "Username") {
       reviewerNames.push({ name, location, rating, text, date });
