@@ -91,14 +91,16 @@ async function scrape(pageNumber, url, $, reviewerNames) {
     const locationElement = parentDiv.find('span.css-qgunke');
     const ratingElement = parentDiv.find('span.display--inline__09f24__c6N_k.border-color--default__09f24__NPAKY');
     const textElement = parentDiv.find('span.raw__09f24__T4Ezm');
+    const revDate = parentDiv.find('span.css-chan6m'); 
 
     const location = locationElement.text();
     const name = nameElement.text();
     const rating = ratingElement.find('div').first().attr('aria-label');
     const text = textElement.text();
+    const date = revDate.first().text();
 
     if (name !== '' && name !== "Username") {
-      reviewerNames.push({ name, location, rating, text });
+      reviewerNames.push({ name, location, rating, text, date });
     }
   });
 }
